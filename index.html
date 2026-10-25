@@ -20,10 +20,10 @@
   <p>本アプリでは、ユーザーの氏名、住所、電話番号などの個人を直接特定できる情報を意図的に収集することはありません。ただし、アプリの機能提供や利便性向上のため、以下の情報を取得・利用する場合があります。</p>
 
   <h3>1-1. アプリ内課金に関する情報</h3>
-  <p>本アプリはアプリ内課金機能を提供しています。決済処理は Google Play などのプラットフォームを通じて行われ、当方がユーザーのクレジットカード情報などの金融情報を直接取得・保存することはありません。ただし、購入アイテムの付与や購入状態の確認のため、プラットフォームから提供される注文番号や購入ステータス等の情報を取得する場合があります。</p>
+  <p>本アプリはアプリ内課金機能を提供しています。決済処理は Apple App Store / StoreKit、Google Play などのプラットフォームを通じて行われ、当方がユーザーのクレジットカード情報などの金融情報を直接取得・保存することはありません。ただし、購入アイテムの付与や購入状態の確認のため、プラットフォームから提供される注文番号や購入ステータス等の情報を取得する場合があります。</p>
 
   <h3>1-2. マルチプレイに関する情報</h3>
-  <p>本アプリはマルチプレイ機能を提供しています。機能の性質上、オンライン通信のための識別子（匿名認証により発行されるユーザーID等）、ならびにゲーム内の進行状況や提出内容などが、通信中に他のプレイヤーと共有・処理される場合があります。当方が独自のユーザーデータベースに氏名等を保存することはありません。</p>
+  <p>本アプリはマルチプレイ機能を提供しています。機能の性質上、オンライン通信のための識別子（Unity Authenticationにより発行されるプレイヤーID等）、ならびにゲーム内の進行状況や提出内容などが、通信中に他のプレイヤーと共有・処理される場合があります。当方が独自のユーザーデータベースに氏名等を保存することはありません。</p>
 
   <h3>1-3. 端末内に保存される情報</h3>
   <p>本アプリは、ライフ数、購入済みアイテム、装備状態などのゲーム進行情報を、ユーザーの端末内（アプリの保存領域）に保存します。</p>
@@ -44,6 +44,19 @@
     <li>Unity Gaming Services（Authentication / Relay 等）（Unity Technologies）</li>
   </ul>
 
+<h2 id="integrity">アプリの認証・不正利用対策（2026年10月25日追記）</h2>
+<p>正規アプリからのオンライン接続を確認するため、iOSではApple App Attest、AndroidではGoogle Play Integrityを利用します。検証はCloudflare Workers / Durable Objectsで行い、成功時にUnity AuthenticationのプレイヤーIDと短期間の認証情報を発行します。</p>
+<p>インストール単位の識別子から導出したID、App Attestの公開鍵と鍵ID、検証カウンター、認証に必要な検証結果・時刻をサーバーで保存・処理します。通信時にはIPアドレス等の接続情報もサービス事業者に処理されます。これらは認証、不正利用・再送攻撃の防止、通信の保護に使用し、当方はこれらの認証用IDを広告目的のトラッキングには使用しません。端末内のApp Attest秘密鍵を当方が取得することはありません。</p>
+<p>購入はApple App Store / StoreKitまたはGoogle Play Billingで処理されます。広告にはUnity Adsを使用します。iOSではトラッキング許可をシステム画面で選択でき、設定アプリから変更できます。ゲーム内のヒントやお題は同じ部屋の参加者に共有されます。データや削除に関するお問い合わせは fj.lol.bdg@gmail.com までご連絡ください。</p>
+<h2 lang="en">Privacy information — English</h2>
+<p lang="en">FJ operates Merito. Online play uses Unity Authentication and Relay. Apple App Attest (iOS) and Google Play Integrity (Android) help verify genuine app access through Cloudflare Workers and Durable Objects. The server processes and stores installation-derived identifiers, Unity player identifiers, App Attest public keys/key IDs, counters, and verification results/timestamps. Providers also process connection information such as IP addresses. These identifiers support authentication, security and fraud/replay prevention; FJ does not use these authentication IDs for advertising tracking. App Attest private keys remain on the device. In-room clues and topics are shared with participants in that room.</p>
+<p lang="en">Unity Ads processes advertising identifiers, ad interactions, device and usage information. iOS tracking permission can be managed in system settings. Apple App Store/StoreKit or Google Play Billing processes payments; FJ does not receive payment-card details. Purchase status is used to grant and restore items. Local progress and cosmetic settings are stored on the device. Contact FJ at fj.lol.bdg@gmail.com for support, data or deletion inquiries. Updated 25 October 2026.</p>
+<h2 lang="zh-Hans">隐私信息 — 简体中文</h2>
+<p lang="zh-Hans">FJ运营Merito。在线游戏使用Unity Authentication和Relay，并通过Cloudflare Workers和Durable Objects验证Apple App Attest（iOS）或Google Play Integrity（Android）的应用证明。服务器处理并保存由安装标识派生的ID、Unity玩家ID、App Attest公钥及密钥ID、计数器、验证结果和时间。服务提供商也会处理IP地址等连接信息。这些认证ID用于认证、安全及防止欺诈和重放攻击，FJ不将其用于广告跟踪。App Attest私钥保留在设备中。同一房间的玩家可看到房间中的提示和题目。</p>
+<p lang="zh-Hans">Unity Ads处理广告标识、广告互动、设备和使用信息。iOS跟踪许可可在系统设置中更改。付款通过Apple App Store/StoreKit或Google Play Billing处理；FJ不会获取银行卡信息。购买状态用于发放及恢复物品。本地进度和外观设置保存在设备中。有关支持、数据或删除的咨询，请联系 fj.lol.bdg@gmail.com。更新日期：2026年10月25日。</p>
+<h2 lang="ko">개인정보 안내 — 한국어</h2>
+<p lang="ko">FJ는 Merito를 운영합니다. 온라인 플레이는 Unity Authentication과 Relay를 사용합니다. Cloudflare Workers 및 Durable Objects에서 Apple App Attest(iOS) 또는 Google Play Integrity(Android)를 검증합니다. 서버는 설치 식별자에서 파생된 ID, Unity 플레이어 ID, App Attest 공개 키와 키 ID, 카운터, 검증 결과와 시간을 처리하고 저장합니다. 서비스 제공자는 IP 주소 등 연결 정보도 처리합니다. 이 인증 ID는 인증, 보안, 부정 이용 및 재전송 공격 방지에 사용되며 FJ는 광고 추적에 사용하지 않습니다. App Attest 개인 키는 기기에 남습니다. 방 안의 힌트와 주제는 같은 방 참가자에게 공유됩니다.</p>
+<p lang="ko">Unity Ads는 광고 식별자, 광고 상호작용, 기기 및 사용 정보를 처리합니다. iOS 추적 권한은 시스템 설정에서 변경할 수 있습니다. 결제는 Apple App Store/StoreKit 또는 Google Play Billing에서 처리하며 FJ는 결제 카드 정보를 받지 않습니다. 구매 상태는 아이템 지급과 복원에 사용됩니다. 로컬 진행 상황과 꾸미기 설정은 기기에 저장됩니다. 지원, 데이터 또는 삭제 관련 문의: fj.lol.bdg@gmail.com. 업데이트: 2026년 10월 25일.</p>
   <h2>3. 免責事項</h2>
   <p>本アプリが提供する情報、サービス等により生じた損害やトラブルについて、当方は一切の責任を負わないものとします。</p>
 
